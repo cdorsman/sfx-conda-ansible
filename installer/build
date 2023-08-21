@@ -1,0 +1,12 @@
+#!/bin/bash
+
+tar -C payload/ -zcf ./payload.tar.gz .
+
+if [ -e "payload.tar.gz" ]; then
+    cat decompress payload.tar.gz > ansible-env.bsx
+    echo "ansible-env.bsx created"
+    exit 0
+else
+    echo "payload.tar.gz does not exist"
+    exit 1
+fi
