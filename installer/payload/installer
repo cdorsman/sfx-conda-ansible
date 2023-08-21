@@ -1,0 +1,16 @@
+#!/bin/bash
+echo "Running Installer"
+
+INSTALL_ROOT="/tmp/ansible-env"
+if [ ! -d $INSTALL_ROOT ]; then
+    mkdir $INSTALL_ROOT
+fi
+
+tar -C $INSTALL_ROOT -zxf ./ansible-env.tar.gz
+[[ $?>0 ]] && exit 1
+
+export PATH=$PATH:$INSTALL_ROOT/bin
+conda-unpack
+source $INSTALL_ROOT/bin/activate
+
+#### Do the fun stuff ####
